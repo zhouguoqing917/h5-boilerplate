@@ -1,0 +1,1 @@
++function(n){"use strict";var i={autoInit:!1,showPageLoadingIndicator:!0,router:!0,swipePanel:"left",swipePanelOnlyClose:!1,pushAnimationDuration:400};n.smConfig=n.extend(i,n.config)}($);

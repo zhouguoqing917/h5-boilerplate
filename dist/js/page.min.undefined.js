@@ -1,0 +1,1 @@
++function(t){"use strict";t.getCurrentPage=function(){return t(".page")[0]||document.body}}($);
