@@ -26,7 +26,14 @@
     });
 
     $.noop = function() {};
-    
+    $.fn.getQueryString=function(name) {
+        var reg = new RegExp("(^|&?)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r !== null) {
+            return decodeURIComponent(r[2]);
+        }
+        return "";
+    };
     //support
     $.support = (function() {
         var support = {
@@ -136,7 +143,7 @@
                 for (var i = 0; i < el.attributes.length; i++) {
                     var attr = el.attributes[i];
                     if (attr.name.indexOf('data-') >= 0) {
-                        dataset[$.toCamelCase(attr.name.split('data-')[1])] = attr.value;
+                        dataset[$.toCamelCase(attr.name.split('data-')[1])] = attr.value; //replace data
                     }
                 }
             }
@@ -148,7 +155,13 @@
             return dataset;
         } else return undefined;
     };
-    $.fn.data = function(key, value) {
+    /**
+     *
+     * @param key
+     * @param value
+     * @returns {*}
+     */
+    $.fn.elData = function(key, value) {
         if (typeof value === 'undefined') {
             // Get value
             if (this[0] && this[0].getAttribute) {
@@ -157,7 +170,7 @@
                 if (dataKey) {
                     return dataKey;
                 } else if (this[0].smElementDataStorage && (key in this[0].smElementDataStorage)) {
-                
+
 
                     return this[0].smElementDataStorage[key];
 
@@ -176,6 +189,53 @@
             return this;
         }
     };
+    /**
+     *
+     * @param el
+     * @returns all attrs
+     */
+    $.fn.getDataSet=function(el){
+        var dataset = {};
+        try {
+            if (el) {
+                if(typeof(el)=='Array' && el.length>0){
+                    el = el[0];
+                }
+                var dataJson = el.dataset || {}; //get all dataset
+                var j = 0;
+                if (dataJson && Object.keys(dataJson).length>0 ) {
+                    for (j in dataJson) {
+                        var k = j;
+                        var v = dataJson[k] || '';
+                        k = k.replace(/data-/, '');
+                        dataset[k] = v;
+                    }
+                    return dataset;
+                } else {
+                    var nodeMap = el.attributes || {}; //get all NamedNodeMap
+                    dataset = {};
+                    for (j in nodeMap) {
+                        var attr = nodeMap[j] || '';
+                        var k = attr.name;
+                        var v = attr.value || '';
+                        if (/data-/i.test(k)) {
+                            k = k.replace(/data-/, '');
+                            dataset[k] = v;
+                        }
+                    }
+                }
+            }
+            for (var key in dataset) {
+                if (dataset[key] === 'false') dataset[key] = false;
+                else if (dataset[key] === 'true') dataset[key] = true;
+                else if (parseFloat(dataset[key]) === dataset[key] * 1) dataset[key] = dataset[key] * 1;
+            }
+        }catch(e){
+            console.log(e)
+        }
+        return dataset;
+    };
+
     $.fn.animationEnd = function(callback) {
         var events = ['webkitAnimationEnd', 'OAnimationEnd', 'MSAnimationEnd', 'animationend'],
             i, dom = this;

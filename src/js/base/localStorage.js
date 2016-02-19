@@ -12,7 +12,7 @@
  *                 1.0.1 - localStorage工具类
  *
  **/
-svp.define('base/store', function (require, exports, module) {
+define('base/store', function (require, exports, module) {
 	  
   'use strict';
   

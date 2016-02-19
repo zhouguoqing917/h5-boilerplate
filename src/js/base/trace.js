@@ -5,7 +5,7 @@
  *   @create-date: 15/12/28
  *   @update-log :
  *   15/12/28  guoqingzhou  xx
- *   Todo url
+ *
  *
  */
 (function(global,$) {

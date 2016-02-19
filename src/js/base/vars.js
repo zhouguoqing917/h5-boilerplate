@@ -22,31 +22,6 @@
   'use strict';
 
   var VARS = {};
-
- //最简单的module定义
-  window.__modules__ = window.__modules__ || {};
-
-  window.require = function (id) {
-      var mod = window.__modules__[id];
-      var exports = 'exports';
-      
-      if (typeof mod === 'object') {
-        
-        return mod;
-      }
-      
-      if (!mod[exports]) {
-        mod[exports] = {};
-        mod[exports] = mod.call(mod[exports], window.require, mod[exports], mod) || mod[exports];
-      }
-      
-      return mod[exports];
-  };
-
-  window.define = function(path, fn) {
-    window.__modules__[path] = fn;
-  };
-
   //settings
   VARS.API_KEY = 'f351515304020cad28c92f70f002261c';
   VARS.API_TOKEN = '';

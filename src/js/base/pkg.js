@@ -67,8 +67,8 @@
         return this.Config;
     };
 
-    svp.pkg = pkg;
-    svp.define('base/pkg', function (require, exports, module) {
+    window.pkg = pkg;
+    define('base/pkg', function (require, exports, module) {
         module.exports = svp.pkg;
     });
-}(svp));
+}(window));

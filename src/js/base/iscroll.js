@@ -1210,7 +1210,7 @@ else window.iScroll = iScroll;
             return ret !== undefined ? ret : this;
         };
 
-    })( window.Zepto || null, window );
+    })( window.Zepto || window.jQuery, window );
 
 
 

@@ -13,7 +13,7 @@
  *                 1.0.2 - 容器计算出的宽度增加2px iPhone QQ&UC热点导航缺失一个tab
  *
  */
-svp.define('swipe', function (require, exports, module) {
+define('swipe', function (require, exports, module) {
     /* hots_nav */
     var getElementPos = function(o){
         var point = {x:0, y:0};

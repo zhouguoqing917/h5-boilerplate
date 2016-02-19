@@ -101,6 +101,14 @@ gulp.task('copy', [
     'copy:misc'
 ]);
 
+var jsmincfg = {
+    mangle: {
+        toplevel: true,
+        except: ['Zepto', 'jQuery', 'Backbone', 'seajs', 'define', 'require', 'module', 'exports']
+    },
+    fromString: true,
+    compress: true
+};
 
 
 gulp.task('copy:index.html', function () {
@@ -174,6 +182,87 @@ gulp.task('copy:misc', function () {
     }).pipe(gulp.dest(dirs.dist));
 });
 
+//压缩seajs+comboHash
+gulp.task('seajs', function() {
+    return gulp.src([
+            opts.src+'/js/seajs.js'
+    ])  .pipe(concat('seajs.dev.js'))
+        .pipe(uglify(jsmincfg))
+        .pipe(rename('seajs.min.js'))
+        .pipe(gulp.dest(opts.dist+'/js/'));  //输出
+});
+
+//压缩zepto
+gulp.task('zepto', function() {
+
+    return gulp.src([
+            opts.src+'/js/zepto/zepto.js',
+            opts.src+'/js/zepto/event.js',
+            opts.src+'/js/zepto/ajax.js',
+            opts.src+'/js/zepto/form.js',
+            opts.src+'/js/zepto/ie.js',
+            opts.src+'/js/zepto/detect.js',
+            opts.src+'/js/zepto/fx.js',
+            opts.src+'/js/zepto/fx_methods.js',
+            opts.src+'/js/zepto/assets.js',
+            opts.src+'/js/zepto/data.js',
+            opts.src+'/js/zepto/deferred.js',
+            opts.src+'/js/zepto/callbacks.js',
+            opts.src+'/js/zepto/selector.js',
+            opts.src+'/js/zepto/touch.js',
+            opts.src+'/js/zepto/ios3.js',
+            opts.src+'/js/zepto/gesture.js',
+            opts.src+'/js/zepto/stack.js',
+            opts.src+'/js/zepto/svp_fx_fn.js',
+            opts.src+'/js/zepto/svp_position.js',
+            opts.src+'/js/zepto/svp_zepto.js'
+
+
+    ])  .pipe(concat('zepto.dev.js'))
+        .pipe(uglify(jsmincfg))
+        .pipe(rename('zepto.min.js'))
+        .pipe(gulp.dest(opts.dist+'/js/'));  //输出
+});
+
+
+//压缩zepto
+gulp.task('light', function() {
+
+    return gulp.src([
+
+            opts.src+'js/intro.js',
+            opts.src+'js/device.js',
+            opts.src+'js/util.js',
+            opts.src+'js/detect.js',
+            opts.src+'js/zepto-adapter.js',
+            opts.src+'js/fastclick.js',
+            opts.src+'js/template7.js',
+            opts.src+'js/page.js',
+            opts.src+'js/tabs.js',
+            opts.src+'js/bar-tab.js',
+            opts.src+'js/modal.js',
+            opts.src+'js/calendar.js',
+            opts.src+'js/picker.js',
+            opts.src+'js/datetime-picker.js',
+            opts.src+'js/pull-to-refresh-js-scroll.js',
+            opts.src+'js/pull-to-refresh.js',
+            opts.src+'js/infinite-scroll.js',
+            opts.src+'js/notification.js',
+            opts.src+'js/index.js',
+            opts.src+'js/searchbar.js',
+            opts.src+'js/panels.js',
+            opts.src+'js/router.js',
+            opts.src+'js/init.js'
+
+
+    ])  .pipe(concat('light.dev.js'))
+        .pipe(uglify(jsmincfg))
+        .pipe(rename('light.min.js'))
+        .pipe(gulp.dest(opts.dist+'/js/'));  //输出
+});
+
+
+gulp.task('jsmin', ['seajs','zepto','light']);
 
 gulp.task('lint:js', function () {
     return gulp.src([
@@ -196,13 +285,10 @@ gulp.task('cssmin', function() {
 
 //压缩js
 gulp.task('jsmin', function() {
-    var cfg = {
-        mangle: {except: ['define', 'require', 'module', 'exports']},
-        compress: true
-    };
+
     return gulp.src('src/js/*.js')
         .pipe(rename({suffix: '.min.'+opts.ver }))   //rename压缩后的文件名
-        .pipe(uglify(cfg))
+        .pipe(uglify(jsmincfg))
         .pipe(gulp.dest('dist/js/'));  //输出
 });
 

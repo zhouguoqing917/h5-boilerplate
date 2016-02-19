@@ -55,7 +55,7 @@
         (0 in this ? getData(this[0], name) : undefined) :
       // set value on all elements
       this.each(function(){ setData(this, name, value) })
-  }
+  };
 
   $.fn.removeData = function(names) {
     if (typeof names == 'string') names = names.split(/\s+/)
@@ -65,7 +65,7 @@
         delete store[names ? camelize(this) : key]
       })
     })
-  }
+  };
 
   // Generate extended `remove` and `empty` functions
   ;['remove', 'empty'].forEach(function(methodName){
@@ -77,4 +77,4 @@
       return origFn.call(this)
     }
   })
-})(Zepto)
+})(Zepto);
