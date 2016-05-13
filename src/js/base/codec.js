@@ -12,7 +12,7 @@
  *                 1.0.1 - base64加密解码、md5相关类
  *
  */
-define('base/codec', function(require, exports, module) {
+(function (global) {
 
     'use strict';
 
@@ -595,7 +595,7 @@ define('base/codec', function(require, exports, module) {
         return raw_hmac_md5(key, string);
     };
 
-    module.exports = {
+    var Codec = {
         /**
          * @memberof BaseCodec
          * @summary 文件版本号
@@ -745,4 +745,6 @@ define('base/codec', function(require, exports, module) {
          */
         md5: md5
     };
-});
+    window.Codec=Codec;
+
+}(window));

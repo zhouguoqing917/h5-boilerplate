@@ -4,11 +4,8 @@
  *
  * */
 
-define('base/cookie', function (require, exports, module) {
-
+(function (global) {
     'use strict';
-
-
     /**
      * @module base.cookie
      * @namespace Cookie
@@ -204,7 +201,7 @@ define('base/cookie', function (require, exports, module) {
                 s = d.lastIndexOf('.', d.lastIndexOf('.') - 1);
             }
             s = (s === -1) ? 0 : ++s;
-            
+
             return d.substring(s);
         },
         randomUid: function () {
@@ -220,6 +217,6 @@ define('base/cookie', function (require, exports, module) {
     Cookie._init();
 
     window.Cookie = Cookie;
-    module.exports = Cookie;
 
-});
+
+}(window));

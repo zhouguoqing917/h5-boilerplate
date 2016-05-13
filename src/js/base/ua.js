@@ -1,4 +1,4 @@
-(function (S, undefined) {
+(function (S) {
 
     'use strict';
     /*global process*/
@@ -361,10 +361,6 @@
     // use by analysis tools in nodejs
     UA.getDescriptorFromUserAgent = getDescriptorFromUserAgent;
 
-
-    svp.define('base/ua', function (require, exports, module) {
-        module.exports = UA;
-    });
 
 })(svp);
 

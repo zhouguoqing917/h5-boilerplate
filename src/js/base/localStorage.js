@@ -12,7 +12,7 @@
  *                 1.0.1 - localStorage工具类
  *
  **/
-define('base/store', function (require, exports, module) {
+(function (global) {
 	  
   'use strict';
   
@@ -343,6 +343,6 @@ define('base/store', function (require, exports, module) {
   };
   
   window.Store = store;
-  module.exports = store;
 
-});
+
+}(window));

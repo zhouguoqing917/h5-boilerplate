@@ -5,7 +5,7 @@
 //     Some code (c) 2005, 2013 jQuery Foundation, Inc. and other contributors
 
 ;(function($){
-  var slice = Array.prototype.slice
+  var slice = Array.prototype.slice;
 
   function Deferred(func) {
     var tuples = [

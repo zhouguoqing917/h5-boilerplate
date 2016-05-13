@@ -14,7 +14,7 @@
  *
  **/
 
-define('base/console', function (require, exports, module) {
+(function (global) {
 
     'use strict';
 
@@ -170,10 +170,11 @@ define('base/console', function (require, exports, module) {
     var leves=['LOG','DEBUG','INFO','ERROR','WARN'];
     for(var i=0;i<leves.length;i++){
         var l=leves[i];
-        Console[i.toLowerCase()] = function (text1, text2) {
+        Console[l.toLowerCase()] = function (text1, text2) {
             var logs = service.logObj("LOG");
             service.output(logs, text1, text2);
         };
+
     }
     /**
      * @memberof Console
@@ -236,6 +237,4 @@ define('base/console', function (require, exports, module) {
     };
 
     window.Console = Console;
-    module.exports = Console;
-
-});
+}(window));

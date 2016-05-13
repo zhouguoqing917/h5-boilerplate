@@ -25,13 +25,13 @@
   //settings
   VARS.API_KEY = 'f351515304020cad28c92f70f002261c';
   VARS.API_TOKEN = '';
-  VARS.API_PRI_URL = 'http://jcjcwang.com/'; //http://101.200.197.106:8080;
-  VARS.API_PRI_URL_TEST = 'http://my.jcjcwang.com/';
+  VARS.API_PRI_URL = 'http://test.com/'; //http://101.200.197.106:8080;
+  VARS.API_PRI_URL_TEST = 'http://my.test.com/';
   VARS.PAGE_PATH = '/';
   VARS.DEBUG = false;
   VARS.IsAutoTrace = true;
 
-  if(/my\.jcjcwang\.com/i.test(location.href)){
+  if(/my\.test\.com/i.test(location.href)){
     VARS.DEBUG = true;
   }
 
@@ -241,5 +241,13 @@
 
   //导出接口
   global.VARS = VARS;
-   
+
+  if (typeof define === "function") {
+    define(function(require, exports, module) {
+        module.exports = {
+            VARS:VARS
+        };
+    })
+  }
+
 }(window));
