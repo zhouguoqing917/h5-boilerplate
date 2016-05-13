@@ -217,6 +217,13 @@
     Cookie._init();
 
     window.Cookie = Cookie;
-
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/cookie',function(require, exports, module) {
+            module.exports = Cookie;
+        })
+    }
 
 }(window));

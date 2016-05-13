@@ -237,4 +237,12 @@
     };
 
     window.Console = Console;
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/console',function(require, exports, module) {
+            module.exports = Console;
+        })
+    }
 }(window));

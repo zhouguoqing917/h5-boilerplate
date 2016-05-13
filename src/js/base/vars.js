@@ -242,12 +242,14 @@
   //导出接口
   global.VARS = VARS;
 
-  if (typeof define === "function") {
-    define(function(require, exports, module) {
-        module.exports = {
-            VARS:VARS
-        };
-    })
-  }
+
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/vars',function(require, exports, module) {
+            module.exports = VARS;
+        })
+    }
 
 }(window));

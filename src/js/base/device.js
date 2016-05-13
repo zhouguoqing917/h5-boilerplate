@@ -101,4 +101,13 @@ Device/OS Detection
     if (classNames.length > 0) $('html').addClass(classNames.join(' '));
 
     $.device = device;
+
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/device',function(require, exports, module) {
+            module.exports = $.device;
+        })
+    }
 })($);

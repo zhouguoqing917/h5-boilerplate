@@ -65,7 +65,15 @@
 		return $.adaptObject(this, defaults, option,_tipsTpl,Tips,"tips");
 	}
 
-	$.fn.tips=$.tips= Plugin;
+	$.fn.tips=$.tips = Plugin;
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/tips',function(require, exports, module) {
+            module.exports = $.tips;
+        })
+    }
 
 }(window.Zepto||window.jQuery);
 	

@@ -153,4 +153,14 @@
 
     global.Trace = Trace;
 
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/trace',function(require, exports, module) {
+            module.exports = Trace;
+        })
+    }
+
+
 }(window));

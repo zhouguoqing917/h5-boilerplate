@@ -85,7 +85,14 @@
 	}
 	$.fn.dialog=$.dialog= Plugin;
 
-
+     /*
+      * 兼容 RequireJS 和 Sea.js
+      */
+     if (typeof define === "function") {
+         define('base/dialog',function(require, exports, module) {
+             module.exports = $.dialog;
+         })
+     }
  }(window.Zepto||window.jQuery);
 	
 

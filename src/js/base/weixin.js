@@ -190,7 +190,7 @@
 
     if (typeof define === "function") {
         //export
-        define('weixin', function(require, exports, module) {
+        define('base/weixin', function(require, exports, module) {
             //window.WeixinApi = WeixinJS;
             module.exports =  WeixinJS;
         });

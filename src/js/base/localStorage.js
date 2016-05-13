@@ -344,5 +344,12 @@
   
   window.Store = store;
 
-
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/localStorage',function(require, exports, module) {
+            module.exports = store;
+        })
+    }
 }(window));

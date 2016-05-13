@@ -1607,5 +1607,12 @@
 
 
     global.Util = Util;
-
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/util',function(require, exports, module) {
+            module.exports = Util;
+        })
+    }
 }(window));

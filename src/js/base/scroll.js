@@ -1238,7 +1238,7 @@ Scroll.prototype = {
      * 兼容 RequireJS 和 Sea.js
      */
     if (typeof define === "function") {
-        define(function(require, exports, module) {
+        define('base/scroll',function(require, exports, module) {
             module.exports = Scroll;
         })
     }

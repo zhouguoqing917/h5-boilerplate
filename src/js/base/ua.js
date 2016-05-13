@@ -360,7 +360,14 @@
 
     // use by analysis tools in nodejs
     UA.getDescriptorFromUserAgent = getDescriptorFromUserAgent;
-
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/ua',function(require, exports, module) {
+            module.exports = UA;
+        })
+    }
 
 })(svp);
 

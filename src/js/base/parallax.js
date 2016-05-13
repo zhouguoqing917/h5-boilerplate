@@ -585,5 +585,4 @@ if (typeof $ === 'undefined') { throw new Error('Parallax.js\'s script requires 
         }   
     }, false);
 
-
 }(window.Zepto||window.jQuery);

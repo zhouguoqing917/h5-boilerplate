@@ -746,5 +746,13 @@
         md5: md5
     };
     window.Codec=Codec;
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/codec',function(require, exports, module) {
+            module.exports = Codec;
+        })
+    }
 
 }(window));

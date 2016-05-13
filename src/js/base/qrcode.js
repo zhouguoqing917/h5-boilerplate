@@ -1342,7 +1342,7 @@
     window.QRCode = qrcode;
 
     if (typeof define === "function") {
-        define('qrcode',function(require, exports, module) {
+        define('base/qrcode',function(require, exports, module) {
             module.exports  = qrcode;
         })
     }

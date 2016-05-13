@@ -65,6 +65,7 @@ var dateString = function (fmt) {
 opts.date = dateString();
 opts.ver = dateString('YYYYMMDD');
 opts.uri="http://tv.sohu.com/upload/touch";
+var comment = '/*! h5 Boilerplate v 1.0 ,' +' date '+opts.date + ' */\n\n';
 
 var exec = require('child_process').exec,child;
 child = exec('rm -rf dist',function(err,out) {
@@ -176,22 +177,12 @@ gulp.task('img', function() {
         .pipe(gulp.dest('dist/img'));
 });
 
-//gulp.task('copy:img', function () {
-//    return gulp.src([dirs.src +'/img/**'], {
-//        // Include hidden files by default
-//        dot: false
-//    }).pipe(gulp.dest(dirs.dist + '/img'))
-//    .pipe(livereload());
-//});
 
 gulp.task('copy:main.css', function () {
-    var comment = '/*! h5 Boilerplate v' + pkg.version  +
-                    ' | ' + pkg.homepage + ' */\n\n';
+
 
     return gulp.src(dirs.src + '/css/main.css')
-                .pipe(banner(comment, {
-                    pkg: pkg
-                }))
+                .pipe(banner(comment))
                .pipe(autoprefixer({
                    browsers: ['last 2 versions', 'ie >= 8', '> 1%'],
                    cascade: false
@@ -200,7 +191,7 @@ gulp.task('copy:main.css', function () {
 });
 
 gulp.task('less', function() {
-    return gulp.src(opts.src+'/less/**')
+    return gulp.src([opts.src+'/less/**/*.less'])
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
         .pipe(less())
         .pipe(autoprefixer({
@@ -210,15 +201,13 @@ gulp.task('less', function() {
         }))
         .pipe(gulp.dest(opts.dist+'/css'))
         .pipe(cssmin()) //兼容IE7及以下需设置compatibility属性 .pipe(cssmin({compatibility: 'ie7'}))
+        //.pipe(gulp.dest(opts.dist+'/css'))
         .pipe(rename({
             suffix: '.min'
         }))
+        .pipe(livereload())
         .pipe(gulp.dest(opts.dist+'/css'))
-        .pipe(rename({
-            suffix: '.' + opts.ver
-        }))
-        .pipe(gulp.dest(opts.dist+'/css'))
-        .pipe(livereload());
+
 
 });
 gulp.task('copy:demo', function () {
@@ -320,6 +309,7 @@ gulp.task('scripts', function() {
             '!'+opts.src+'/js/seajs/*.js',
             '!'+opts.src+'/js/**/*.min.js'
     ])
+
         .pipe(gulp.dest(opts.dist + '/js/'))
         .pipe(livereload())
         .pipe(rename({suffix: '.min'}))
@@ -398,7 +388,7 @@ gulp.task('watch', function() {
 
     gulp.watch([opts.src + '/**/*.html'], ['html']);// 监听根目录下所有.html文件
 
-    gulp.watch([opts.src + '/less/*'], ['less']);
+    gulp.watch([opts.src + '/less/**/*.less'], ['less']);
 
     gulp.watch([opts.src + '/css/*'], ['cssmin']);
     //js太慢了
@@ -407,7 +397,7 @@ gulp.task('watch', function() {
     gulp.watch([opts.src + '/js/**/*.js'], ['scripts']);
 
     gulp.watch([opts.src + '/img/**'], function (event) {
-        gulp.run('copy:img');
+        gulp.run('img');
     });
     gulp.watch([opts.src + '/fonts/**'], ['copy:fonts']);
 

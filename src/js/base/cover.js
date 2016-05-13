@@ -343,6 +343,14 @@
 	}
 	$.fn.cover = $.cover = Plugin;
 
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/cover',function(require, exports, module) {
+            module.exports = $.cover;
+        })
+    }
 
 }(window.Zepto||window.jQuery);
 

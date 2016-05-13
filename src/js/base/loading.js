@@ -45,7 +45,14 @@
 	}
 	$.fn.loading=$.loading= Plugin;
 
-
+    /*
+     * 兼容 RequireJS 和 Sea.js
+     */
+    if (typeof define === "function") {
+        define('base/loading',function(require, exports, module) {
+            module.exports = $.loading;
+        })
+    }
 }(window.Zepto||window.jQuery);
 
 	
