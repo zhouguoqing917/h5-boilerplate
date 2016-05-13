@@ -1,0 +1,97 @@
+.img {
+  position: relative;
+}
+.img > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+}
+.placehold-img {
+  position: relative;
+}
+.placehold-img > span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+}
+.icon {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  line-height: 44px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+}
+.arrowlink {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  line-height: 44px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  color: #c7c7c7;
+  content: "\f600";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -22px;
+  margin-right: -10px;
+}
+@media (max-width: 320px) {
+  .arrowlink {
+    right: 10px;
+  }
+}
+.nowrap {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ui-select {
+  position: relative;
+  margin-right: 6px;
+}
+.ui-select select {
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  width: 100%;
+  padding-right: 14px;
+}
+.ui-select:after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -4px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid;
+  border-right: 5px solid rgba(0, 0, 0, 0);
+  border-left: 5px solid rgba(0, 0, 0, 0);
+  color: #a6a6a6;
+  content: "";
+  pointer-events: none;
+}
+.ui-select-group {
+  margin-left: 95px;
+  overflow: hidden;
+}
+.ui-select-group .ui-select {
+  float: left;
+}
+.ui-form-item > .ui-select {
+  margin-left: 95px;
+}

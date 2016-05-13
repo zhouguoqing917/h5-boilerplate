@@ -1,0 +1,122 @@
+.img {
+  position: relative;
+}
+.img > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+}
+.placehold-img {
+  position: relative;
+}
+.placehold-img > span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+}
+.icon {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  line-height: 44px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+}
+.arrowlink {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  line-height: 44px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  color: #c7c7c7;
+  content: "\f600";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -22px;
+  margin-right: -10px;
+}
+@media (max-width: 320px) {
+  .arrowlink {
+    right: 10px;
+  }
+}
+.nowrap {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ui-selector header {
+  padding: 6px 10px;
+  color: #a6a6a6;
+  overflow: hidden;
+}
+.ui-selector header h3 {
+  float: left;
+}
+.ui-selector-content {
+  background: #fff;
+}
+.ui-selector-item p {
+  margin-left: 10px;
+  -webkit-box-flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ui-selector-item .ui-txt-info {
+  margin: 0 10px;
+  font-size: 12px;
+}
+.ui-selector-item .ui-list-link li:after {
+  display: none;
+}
+.ui-selector-item h3:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid;
+  border-top: 5px solid rgba(0, 0, 0, 0);
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  color: #a6a6a6;
+  position: absolute;
+  left: 25px;
+  top: 15px;
+  -webkit-transition: all 0.2s;
+}
+.ui-selector-item.active h3:before {
+  -webkit-transform: rotate(90deg);
+}
+.ui-selector-item.active h3 {
+  border: none;
+  background-image: none;
+}
+.ui-selector-item.active ul {
+  display: block;
+}
+.ui-selector-item ul {
+  display: none;
+}
+.ui-selector-item h3 {
+  display: -webkit-box;
+  font-size: 16px;
+  padding-left: 54px;
+  line-height: 44px;
+  height: 44px;
+  position: relative;
+}
