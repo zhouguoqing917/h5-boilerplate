@@ -129,7 +129,7 @@ gulp.task('copy', [
     'copy:vendor',
     'copy:fonts',
     'copy:main.css',
-    'copy:demo',
+    'copy:doc',
     'copy:test'
 ]);
 
@@ -219,7 +219,16 @@ gulp.task('copy:demo', function () {
         dot: true
 
     }).pipe(gulp.dest(dirs.dist+'/demo'))
+});
+gulp.task('copy:doc', function () {
+    return gulp.src([
+        // Copy all files
+            dirs.src + '/doc/*'
+    ], {
+        // Include hidden files by default
+        dot: true
 
+    }).pipe(gulp.dest(dirs.dist+'/doc'))
 });
 gulp.task('copy:test', function () {
     return gulp.src([

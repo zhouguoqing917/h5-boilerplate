@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>UI Demo</title>
+      <link rel="stylesheet" href="../css/uikit.css">
+
+      <script src="../js/zepto.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <style type="text/css">
+    body {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    #myNav {
+        margin: 0;
+    }
+    #myNavBar {
+        background-color: rgba(203, 203, 204, 0.33);
+    }
+    .navbar {
+      margin-bottom: 20px;
+    }
+    .col-md-9 {
+        width: 55%;
+        float: right;
+    }
+    </style>
+
+  </head>
+  <body>
+
+  <div class="container">
+      <div class="jumbotron">
+          <h1> Affix Plugin</h1>
+      </div>
+      <div id="myNav" >
+          <div class="col-md-3">
+              <ul id="myNavBar" class="nav nav-tabs nav-stacked affix" data-spy="affix"
+                  data-offset-top="60" data-offset-bottom="200">
+                  <li class="active"><a href="#one">Tutorial One</a></li>
+                  <li><a href="#two">Tutorial Two</a></li>
+                  <li><a href="#three">Tutorial Three</a></li>
+              </ul>
+          </div>
+          <div class="col-md-9">
+              <h2 id="one">Tutorial One</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nam eu sem tempor, varius quam at, luctus dui. Mauris magna
+                  metus, dapibus nec turpis vel, semper malesuada ante.
+                  Vestibulum id metus ac nisl bibendum scelerisque non non
+                  purus. Suspendisse varius nibh non aliquet sagittis. In
+                  tincidunt orci sit amet elementum vestibulum. Vivamus
+                  fermentum in arcu in aliquam. Quisque aliquam porta odio
+                  in fringilla. Vivamus nisl leo, blandit at bibendum eu,
+                  tristique eget risus. Integer aliquet quam ut elit suscipit,
+                  id interdum neque porttitor. Integer
+                  faucibus ligula.</p>
+
+              <hr>
+              <h2 id="two">Tutorial Two</h2>
+              <p> Nullam hendrerit justo non leo aliquet imperdiet. Etiam
+                  in sagittis lectus. Suspendisse ultrices placerat accumsan.
+                  Mauris quis dapibus orci. In dapibus velit blandit pharetra
+                  tincidunt. Quisque non sapien nec lacus condimentum facilisis
+                  ut iaculis enim. Sed viverra interdum bibendum. Donec ac
+                  sollicitudin dolor. Sed fringilla vitae lacus at rutrum.
+                  Phasellus congue vestibulum ligula sed consequat.</p>
+
+              <hr>
+              <h2 id="three">Tutorial Three</h2>
+              <p>Integer pulvinar leo id risus pellentesque vestibulum.
+                  Sed diam libero, sodales eget sapien vel, porttitor bibendum
+                  enim. Donec sed nibh vitae lorem porttitor blandit in nec ante.
+                  Pellentesque vitae metus ipsum. Phasellus sed nunc ac sem
+                  malesuada condimentum. Etiam in aliquam lectus. Nam vel sapien
+                  diam. Donec pharetra id arcu eget blandit. Proin imperdiet
+                  mattis augue in porttitor. Quisque tempus enim id lobortis
+                  feugiat. Suspendisse tincidunt risus quis dolor fringilla
+                  blandit. Ut sed sapien at purus lacinia porttitor. Nullam
+                  iaculis, felis a pretium ornare, dolor nisl semper tortor, vel
+                  sagittis lacus est consequat eros. Sed id pretium nisl.
+                  Curabitur dolor nisl, laoreet vitae aliquam id, tincidunt sit
+                  amet mauris. </p>
+
+          </div>
+      </div>
+
+ </div>
+  <footer class="ui-footer ui-footer-btn">
+      <ul class="ui-tiled ui-border-t">
+          <li data-href="index.html" class="ui-border-r">
+              <div>基础样式2</div>
+          </li>
+          <li data-href="ui.html" class="ui-border-r">
+              <div>UI组件</div>
+          </li>
+          <li data-href="js.html">
+              <div>JS插件</div>
+          </li>
+      </ul>
+  </footer>
+  <script src="../js/baseLib.js"></script>
+  <script type="text/javascript">
+      $('.ui-list li,.ui-tiled li').click(function () {
+          if ($(this).data('href')) {
+              location.href = $(this).data('href');
+          }
+      });
+      $('.ui-header .ui-btn').click(function () {
+          location.href = 'index.html';
+      });
+  </script>
+
+</body>
+</html>

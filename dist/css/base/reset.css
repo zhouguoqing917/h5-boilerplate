@@ -26,14 +26,18 @@ html {
   background-repeat: no-repeat;
   -webkit-background-size: cover;
 }
-.icon {
+.icon,
+.font-icon {
   font-family: "iconfont" !important;
   font-size: 32px;
   line-height: 44px;
   font-style: normal;
+  font-weight: normal;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke-width: 0.2px;
-  display: block;
+  display: inline-block;
   color: rgba(0, 0, 0, 0.5);
 }
 .arrowlink {
@@ -41,9 +45,12 @@ html {
   font-size: 32px;
   line-height: 44px;
   font-style: normal;
+  font-weight: normal;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke-width: 0.2px;
-  display: block;
+  display: inline-block;
   color: rgba(0, 0, 0, 0.5);
   color: #c7c7c7;
   content: "\f600";

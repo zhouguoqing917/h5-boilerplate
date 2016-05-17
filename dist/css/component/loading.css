@@ -22,14 +22,18 @@
   background-repeat: no-repeat;
   -webkit-background-size: cover;
 }
-.icon {
+.icon,
+.font-icon {
   font-family: "iconfont" !important;
   font-size: 32px;
   line-height: 44px;
   font-style: normal;
+  font-weight: normal;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke-width: 0.2px;
-  display: block;
+  display: inline-block;
   color: rgba(0, 0, 0, 0.5);
 }
 .arrowlink {
@@ -37,9 +41,12 @@
   font-size: 32px;
   line-height: 44px;
   font-style: normal;
+  font-weight: normal;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke-width: 0.2px;
-  display: block;
+  display: inline-block;
   color: rgba(0, 0, 0, 0.5);
   color: #c7c7c7;
   content: "\f600";
@@ -156,11 +163,14 @@ button.close {
   text-align: center;
   height: 40px;
 }
+.ui-loading-wrap p {
+  margin: 0 0 4px 0;
+}
 .ui-loading {
   width: 20px;
   height: 20px;
   display: block;
-  background: url(../img/loading_sprite.png);
+  background: url(../img/loading.gif);
   -webkit-background-size: auto 20px;
   -webkit-animation: am-rotate 1s steps(12) infinite;
 }
@@ -168,7 +178,7 @@ button.close {
   width: 37px;
   height: 37px;
   display: block;
-  background-image: url(../img/loading_sprite_white.png);
+  background-image: url(../img/loading.gif);
   -webkit-background-size: auto 37px;
   -webkit-animation: am-rotate2 1s steps(12) infinite;
 }
@@ -177,8 +187,8 @@ button.close {
 }
 .ui-loading-block {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 30%;
+  left: 32%;
   width: 100%;
   height: 100%;
   z-index: 9999;
@@ -186,7 +196,6 @@ button.close {
   -webkit-box-orient: horizontal;
   -webkit-box-pack: center;
   -webkit-box-align: center;
-  background: rgba(0, 0, 0, 0.4);
   display: none;
 }
 .ui-loading-block .ui-loading-cnt {
@@ -221,5 +230,58 @@ button.close {
   }
   to {
     background-position: -444px 0;
+  }
+}
+/* loading
+<div class="sk-three-bounce loading">
+	<div class="sk-child sk-bounce1"></div>
+	<div class="sk-child sk-bounce2"></div>
+	<div class="sk-child sk-bounce3"></div>
+</div>
+*/
+.sk-three-bounce {
+  margin: 80px auto;
+  width: 80px;
+  text-align: center;
+}
+.sk-three-bounce .sk-child {
+  width: 18px;
+  height: 18px;
+  background-color: rgba(75, 76, 78, 0.85);
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+}
+.sk-three-bounce .sk-bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.sk-three-bounce .sk-bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }

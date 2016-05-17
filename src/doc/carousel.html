@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>UI Demo</title>
+    <link rel="stylesheet" href="../css/uikit.css">
+
+    <script src="../js/zepto.min.js"></script>
+    <style>
+        /* GLOBAL STYLES
+-------------------------------------------------- */
+        /* Padding below the footer and lighter body text */
+
+        body {
+            padding-bottom: 40px;
+            color: #5a5a5a;
+        }
+
+        /* CUSTOMIZE THE NAVBAR
+        -------------------------------------------------- */
+
+        /* Special class on .container surrounding .navbar, used for positioning it into place. */
+        .navbar-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 20;
+            width: 100%;
+            background-color: #222;
+        }
+
+        /* Flip around the padding for proper display in narrow viewports */
+        .navbar-wrapper .container {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .navbar-wrapper .navbar {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+
+        /* CUSTOMIZE THE CAROUSEL
+        -------------------------------------------------- */
+
+        /* Carousel base class */
+        .carousel {
+            height: 4.2rem;
+            margin: 60px 0px;
+            font-size: 14px;
+        }
+        .carousel h1 {
+
+            font-size: 18px;
+        }
+        /* Since positioning the image, we need to help out the caption */
+
+        .carousel-caption {
+            position: absolute;
+            top: 80%;
+            left: 15%;
+            right: 15%;
+            bottom: 20px;
+            z-index: 10;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 14px;
+            color: #DCDBDB;
+            text-align: left;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        /* Declare heights because of positioning of img element */
+        .carousel .item {
+            height: 4.2rem;
+            background-color: #777;
+        }
+        .carousel-inner > .item > img {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            width: 100%;
+            height: 4.2rem;
+            margin-left:auto;
+            margin-right:auto;
+
+        }
+
+
+
+
+    </style>
+</head>
+<!-- NAVBAR
+================================================== -->
+<body>
+<div class="navbar-wrapper">
+    <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="http://photocdn.sohu.com/tvmobilemvms/20160516/14633558206094638.jpg" alt="First slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <p> headline.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="http://photocdn.sohu.com/tvmobilemvms/20160516/146339241830141001.jpg" alt="Second slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <p>Another </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="http://photocdn.sohu.com/tvmobilemvms/20160516/146339428648192752.jpg" alt="Third slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <p>good measure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="icon-prev"></span></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="icon-next"></span></a>
+</div><!-- /.carousel -->
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
+<footer class="ui-footer ui-footer-btn">
+    <ul class="ui-tiled ui-border-t">
+        <li data-href="index.html" class="ui-border-r">
+            <div>基础样式2</div>
+        </li>
+        <li data-href="ui.html" class="ui-border-r">
+            <div>UI组件</div>
+        </li>
+        <li data-href="js.html">
+            <div>JS插件</div>
+        </li>
+    </ul>
+</footer>
+<script src="../js/baseLib.js"></script>
+<script type="text/javascript">
+    $('.ui-list li,.ui-tiled li').click(function () {
+        if ($(this).data('href')) {
+            location.href = $(this).data('href');
+        }
+    });
+    $('.ui-header .ui-btn').click(function () {
+        location.href = 'index.html';
+    });
+</script>
+
+</body>
+</html>

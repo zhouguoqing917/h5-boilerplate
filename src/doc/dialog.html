@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>UI Demo</title>
+    <link rel="stylesheet" href="../css/uikit.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/baseLib.js"></script>
+    <style>
+        .buttonDemo {
+            margin-left:4px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 11px;
+            min-width: 55px;
+            display: inline-block;
+            font-size: 15px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    </head>
+    <body>
+    <body ontouchstart>
+    <header class="ui-header ui-header-positive ui-border-b">
+        <i class="ui-icon-return" onclick="history.back()"></i><h1>对话框 dialog</h1><button class="ui-btn">回首页</button>
+    </header>
+    <footer class="ui-footer ui-footer-btn">
+        <ul class="ui-tiled ui-border-t">
+            <li data-href="index.html" class="ui-border-r"><div>基础样式</div></li>
+            <li data-href="ui.html" class="ui-border-r"><div>UI组件</div></li>
+            <li data-href="js.html"><div>JS插件</div></li>
+        </ul>
+    </footer>
+    <section class="ui-container">
+        <div class="demo-container">
+            <h2>创建一个对话框，不加遮罩</h2>
+            <p>
+            <pre>
+            $.rDialog({
+                    content : '对话框内容',
+                    title : 'ok',
+                    ok : function() {
+                        alert('我是确定按钮，回调函数返回false时不会关闭对话框。');
+                        return false;
+                    },
+                    cancel : function() {
+                        alert('我是取消按钮');
+                    },
+                    lock : true
+                });
+            </pre>
+            </p>
+            <div class="buttonDemo">
+                <a href="javascript:;" id="demo-1">运行</a>
+            </div>
+            <h2>2秒自动关闭</h2>
+            <p>
+            <pre>
+            $.rDialog({
+                    content : '窗口将在2秒后自动关闭',
+                    title: "alert",
+					width: 600,
+                    time : 2000
+                });
+            </pre>
+            </p>
+            <div class="buttonDemo">
+                <a href="javascript:;" id="demo-2">运行</a>
+            </div>
+
+            <h2>加载中，1秒后消失</h2>
+            <p>
+            <pre>
+             $.rDialog();
+            </pre>
+            </p>
+            <div class="buttonDemo">
+                <a href="javascript:;" id="demo-3">运行</a>
+            </div>
+
+        </div>
+    </section><!-- /.ui-container-->
+    <script>
+        $('.ui-list li,.ui-tiled li').click(function(){
+            if($(this).data('href')){
+                location.href= $(this).data('href');
+            }
+        });
+        $('.ui-header .ui-btn').click(function(){
+            location.href= 'index.html';
+        });
+    </script>
+    <script type="text/javascript">
+            $(function() {
+                // 创建一个对话框
+                $('#demo-1').on('click', function() {
+                    $.rDialog({
+                        content : '对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容',
+                        title : '对话框dialog',
+                        //title : 'ok',
+                        ok : function() {
+                            alert('我是确定按钮，回调函数返回false时不会关闭对话框。');
+                            return false;
+                        },
+                        cancel : function() {
+                            alert('我是取消按钮');
+                        },
+                        lock : true //mask
+                    });
+                });
+
+                // 2秒自动关闭
+                $('#demo-2').on('click', function() {
+                    $.rDialog({
+                        content : '窗口将在2秒后自动关闭',
+                        title: "alert",
+                        //title: "提示",
+                        width: 320,
+                        time : 2000
+                    });
+                });
+
+                $('#demo-3').on('click', function() {
+                    $.rDialog({ time : 1000});
+                });
+
+            })
+
+        </script>
+    </body>
+</html>
