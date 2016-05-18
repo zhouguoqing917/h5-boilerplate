@@ -245,4 +245,5 @@
             module.exports = Console;
         })
     }
+
 }(window));

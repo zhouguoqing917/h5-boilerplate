@@ -51,22 +51,61 @@
         global.inherits = _inherits;
     }
 
+    //给String扩展indexOf方法
+    if (typeof String.indexOf !== 'function') {
+        String.prototype.indexOf = function (str) {
+            var len = this.length;
+            var _len = str.length;
+            var index = 0;
+            var flag = false;
+            while (index < len) {
+                if (this.substr(index, _len) === str) {
+                    flag = true;
+                    break;
+                } else {
+                    index++;
+                }
+            }
+            if (!flag) {
+                index = -1;
+            }
+            return index;
+        };
+    }
+    //给Array扩展indexOf方法
+    if (typeof Array.indexOf !== 'function') {
+        Array.prototype.indexOf = function (item) {
+            var rst = -1;
+            for (var i = 0, l = this.length; i < l; i++) {
+                if (this[i] === item) {
+                    rst = i;
+
+                    break;
+                }
+            }
+            return rst;
+        };
+    }
+
+    function isType(type) {
+        return function(obj) {
+            return {}.toString.call(obj) == "[object " + type + "]"
+        }
+    }
+
+    var isObject = isType("Object");
+    var isString = isType("String");
+    var isArray = Array.isArray || isType("Array");
+    var isFunction = isType("Function");
     /**
      * 没有seajs的时候生效
      */
     if (!global.seajs && typeof global.define !== 'function' && typeof global.require !== 'function') {
-        //没有模块化，就初始化一个最简单的模块
-        function isType(type) {
-            return function (obj) {
-                return {}.toString.call(obj) == "[object " + type + "]"
-            }
-        }
 
-        var isFunction = isType("Function");
         var cachedMods = {};
-
-        function Module() {
-        };
+        function Module() { }
+        global.cachedMods=cachedMods;
+        global.Module=Module;
         Module.prototype.exec = function () {
             var mod = this;
             if (this.execed) {
@@ -95,12 +134,30 @@
         };
 
         global.define = function (id, deps, factory) {
+            var argsLen = arguments.length;
+            // define(factory)
+            if (argsLen === 1) {
+                factory = id;
+                id = undefined
+            } else if (argsLen === 2) {
+                factory = deps;
+
+                // define(deps, factory)
+                if (isArray(id)) {
+                    deps = id;
+                    id = undefined
+                }
+                // define(id, factory)
+                else {
+                    deps = undefined
+                }
+            }
             var meta = {
                 id: id,
                 deps: deps,
                 factory: factory
             };
-
+//            console.log("define",meta);
             Module.save(meta);
         };
 
@@ -111,7 +168,7 @@
             mod.factory = meta.factory;
         };
         Module.get = function (id) {
-            return cachedMods[id] || (cachedMods[id] = new Module());
+            return global.cachedMods[id] || (global.cachedMods[id] = new Module());
         };
         global.require = function (id) {
             var mod = Module.get(id);

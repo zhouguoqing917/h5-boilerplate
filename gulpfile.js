@@ -298,7 +298,36 @@ gulp.task('zepto', function() {
 
 gulp.task('baseLib', function() {
     return gulp.src([
-            opts.src + '/js/base/*.js',
+            opts.src + '/js/base/rem.js',
+            opts.src + '/js/base/xdefind.js',
+            opts.src + '/js/base/es5-shim.js',
+            opts.src + '/js/base/vars.js',
+            opts.src + '/js/base/Console.js',
+            opts.src + '/js/base/jq-zepto-adapter.js',
+            opts.src + '/js/base/ua.js',
+            opts.src + '/js/base/device.js',
+            opts.src + '/js/base/util.js',
+            opts.src + '/js/base/cookie.js',
+            opts.src + '/js/base/trace.js',
+            opts.src + '/js/base/localStorage.js',
+            opts.src + '/js/base/scroll.js',
+            opts.src + '/js/base/loading.js',
+            opts.src + '/js/base/transition.js',
+            opts.src + '/js/base/rDialog.js',
+            opts.src + '/js/base/button.js',
+            opts.src + '/js/base/carousel.js',
+            opts.src + '/js/base/collapse.js',
+            opts.src + '/js/base/dropdown.js',
+            opts.src + '/js/base/tips.js',
+            opts.src + '/js/base/scrollspy.js',
+            opts.src + '/js/base/tab.js',
+            opts.src + '/js/base/affix.js',
+            opts.src + '/js/base/cover.js',
+            opts.src + '/js/base/parallax.js',
+            opts.src + '/js/base/weixin.js',
+            opts.src + '/js/base/codec.js',
+            opts.src + '/js/base/qrcode.js',
+
             '!'+opts.src+'/js/base/*.min.js'
     ])
     .pipe(concat('baseLib.js'))
@@ -314,6 +343,7 @@ gulp.task('baseLib', function() {
 gulp.task('scripts', function() {
     return gulp.src([
             opts.src + '/js/**/*.js',
+
             '!'+opts.src+'/js/zepto/*.js',
             '!'+opts.src+'/js/seajs/*.js',
             '!'+opts.src+'/js/**/*.min.js'
@@ -403,7 +433,7 @@ gulp.task('watch', function() {
     //js太慢了
     gulp.watch([opts.src + '/js/base/*.js'], ['baseLib']);
 
-    gulp.watch([opts.src + '/js/**/*.js'], ['scripts']);
+    gulp.watch([opts.src + '/js/**/*.js'], ['scripts','baseLib']);
 
     gulp.watch([opts.src + '/img/**'], function (event) {
         gulp.run('img');

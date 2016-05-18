@@ -3,6 +3,8 @@
 html {
   -ms-text-size-adjust: 100%; // 2
   -webkit-text-size-adjust: 100%; // 2
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
 }
 @import "../base/variable";
 @import "../base/mixin";
@@ -60,6 +62,7 @@ body {
     -webkit-tap-highlight-color: transparent;
     outline: 0;
 }
+::selection  { background:none;  }
 
 h1, h2, h3, h4, h5, h6 {
     font-size: 100%;

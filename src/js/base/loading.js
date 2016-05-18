@@ -1,8 +1,3 @@
-/**
- * User: jeakeyliang
- * Date: 14-11-07
- * Time: 下午9:20
- */
 
 !function($){
 

@@ -160,6 +160,7 @@ button.close {
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 /*CSS Reset*/
 body,
@@ -210,6 +211,12 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   outline: 0;
+}
+::-moz-selection {
+  background: none;
+}
+::selection {
+  background: none;
 }
 h1,
 h2,
